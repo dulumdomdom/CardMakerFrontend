@@ -69,7 +69,7 @@ type TemplatesCollection = {
   templates: Array<Template>;
 };
 
-type Canvas = Block & {
+type CanvasProps = Block & {
   id: string;
   elements: Array<
     | TextBlockProps
@@ -82,11 +82,11 @@ type Canvas = Block & {
 
 type HistoryCommands = {
   id: number;
-  history: Array<Canvas>;
+  history: Array<CanvasProps>;
 };
 
 type Doc = {
-  canvas: Canvas;
+  canvas: CanvasProps;
   templateCollection: TemplatesCollection;
   historyCommands: HistoryCommands;
   filterCollection: FilterCollection;
@@ -107,7 +107,7 @@ export type {
   SelectionArea,
   Template,
   TemplatesCollection,
-  Canvas,
+  CanvasProps,
   HistoryCommands,
   FilterCollection,
 };

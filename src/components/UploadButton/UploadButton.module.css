@@ -1,0 +1,19 @@
+.toolsImg {
+    width: 40px;
+    height: auto;
+  }
+  
+  .uploadData {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  
+  button {
+    margin: 5px;
+    background: none;
+    border: none;
+  }

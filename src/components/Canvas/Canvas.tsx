@@ -1,4 +1,4 @@
-import { Canvas } from "../../types.tsx";
+import { CanvasProps } from "../../types.tsx";
 import styles from "./Canvas.module.css";
 import TextComponent from "../TextBlock/TextBlock.tsx";
 import CircleComponent from "../GraphicObject/Circle/Circle.tsx";
@@ -7,7 +7,7 @@ import ImageComponent from "../GraphicObject/ImageBlock/ImageBlock.tsx";
 import FilterComponent from "../Filter/Filter.tsx";
 
 type Props = {
-  props: Canvas;
+  props: CanvasProps;
 };
 
 const CanvasComponent = (data: Props) => {

@@ -12,7 +12,7 @@ import {
     SelectionArea,
     Template,
     TemplatesCollection,
-    Canvas,
+    CanvasProps,
     HistoryCommands,
     FilterCollection,
 } from "./types.tsx";
@@ -81,9 +81,9 @@ const template1: Template = {
     {
       id: "img1",
       type: "image",
-      width: 300,
+      width: 500,
       height: 300,
-      x: 250,
+      x: 160,
       y: 150,
       url: "../../src/img/civic.jpg",
       allowedFormat: ["JPG", "JPEG", "PNG"],
@@ -96,16 +96,16 @@ const templateCollection: TemplatesCollection = {
 };
 
 
-const MinPage: Canvas = {
+const MinPage: CanvasProps = {
   id: "pagemin",
   width: 1000,
   height: 600,
-  x: 0,
-  y: 0,
+  x: 50,
+  y: 50,
   elements: [],
 };
 
-const MediumPage: Canvas = {
+const MediumPage: CanvasProps = {
   id: "pagemed",
   width: 1600,
   height: 900,
@@ -151,7 +151,7 @@ const MediumPage: Canvas = {
   ],
 };
 
-const MaximumPage: Canvas = {
+const MaximumPage: CanvasProps = {
   id: "pagemax",
   width: 800,
   height: 600,
@@ -218,7 +218,7 @@ const MaximumPage: Canvas = {
   ],
 };
 
-const TemplatePage: Canvas = {
+const TemplatePage: CanvasProps = {
   id: "pagetem",
   width: 800,
   height: 600,
@@ -228,7 +228,7 @@ const TemplatePage: Canvas = {
 };
 
 const historyCommands: HistoryCommands = {
-  id: 2,
+  id: 1,
   history: [MinPage, MediumPage, MaximumPage, TemplatePage],
 };
 

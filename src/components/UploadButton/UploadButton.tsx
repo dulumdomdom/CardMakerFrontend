@@ -1,13 +1,13 @@
-import { CanvasProps } from "../../types.tsx";
+import { PageProps } from "../../types";
 import { Dispatch, SetStateAction } from "react";
-import { ChangeEvent } from "react";
 import styles from "../UploadButton/UploadButton.module.css";
 
+import { ChangeEvent } from "react";
 type Props = {
-  setPage: Dispatch<SetStateAction<CanvasProps>>;
+  setPage: Dispatch<SetStateAction<PageProps>>;
 };
 
-const UploadData = (props: Props) => {
+const LoadInput = (props: Props) => {
   const { setPage } = props;
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +43,7 @@ const UploadData = (props: Props) => {
 
   return (
     <>
-    <label htmlFor="uploadInput"> <img src="../../src/img/upload.png" className={styles.toolsImg} /></label>
+    <label htmlFor="uploadInput" className={styles.toolsImg}> <img src="../../src/img/upload.png"  /></label>
       <input
         className={styles.uploadData}
         id="uploadInput"
@@ -56,4 +56,4 @@ const UploadData = (props: Props) => {
   );
 };
 
-export default UploadData;
+export default LoadInput;

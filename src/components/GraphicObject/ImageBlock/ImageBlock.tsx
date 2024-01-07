@@ -1,17 +1,32 @@
-import { ImageBlock } from "../../../types.tsx";
-import styles from "./image.module.css";
+import { useState, RefObject } from "react";
+import { ImageBlockProps } from "../../../types";
+import SelectionArea from "../../SelectionArea/SelectionArea";
+import style from "./image.module.css";
 
-const ImageComponent = (data: ImageBlock) => {
+type Props = {
+  props: ImageBlockProps;
+  ref: RefObject<HTMLDivElement>;
+};
+
+const Image = (props: ImageBlockProps) => {
+  const [activeSelectionArea, setActiveSelectionArea] = useState(false);
+
+  const [state, setState] = useState(props);
+
   const styleProps = {
-    width: `${data.width}px`,
-    height: `${data.height}px`,
-    top: `${data.y}px`,
-    left: `${data.x}px`,
-    background: `url(${data.url}) center center/cover no-repeat`,
+    left: 0,
+    top: 0,
+    width: "100%",
   };
 
   return (
-    <div style={styleProps} className={styles.image}></div>
+    <img
+      className={style.image}
+      style={styleProps}
+      src={state.url}
+      alt={state.id}
+    />
   );
 };
-export default ImageComponent;
+
+export default Image;

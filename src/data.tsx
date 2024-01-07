@@ -1,57 +1,65 @@
 import {
-    Doc,
-    TextBlockProps,
-    Position,
-    Size,
-    Block,
-    GraphicObject,
-    ImageBlock,
-    Circle,
-    Rectangle,
-    Filter,
-    SelectionArea,
-    Template,
-    TemplatesCollection,
-    CanvasProps,
-    HistoryCommands,
-    FilterCollection,
+  Doc,
+  TextBlockProps,
+  FilterProps,
+  SelectionAreaProps,
+  TemplateProps,
+  TemplatesCollection,
+  PageProps,
+  Colors,
+  Fonts,
+  DataMenuText,
+  HistoryCommands,
+  FilterCollection,
 } from "./types.tsx";
 
-const redFilter: Filter = {
+const redFilter: FilterProps = {
     name: "redFilter",
     colorOfFilter: "#ff0000",
     type: "filter",
     id: "filter1",
     opacity: 0.5,
+    width: 800,
+    height: 600,
+    x: 0,
+    y: 0,
   };
 
-const greenFilter: Filter = {
+const greenFilter: FilterProps = {
     colorOfFilter: "#00ff00",
     name: "greenFilter",
     type: "filter",
     id: "filter2",
     opacity: 0.5,
+    width: 800,
+    height: 600,
+    x: 0,
+    y: 0,
   };
   
-const blueFilter: Filter = {
+const blueFilter: FilterProps = {
     name: "blueFilter",
     colorOfFilter: "#0000ff",
     type: "filter",
     id: "filter3",
     opacity: 0.5,
+    width: 800,
+    height: 600,
+    x: 0,
+    y: 0,
   };
 
 const filterCollection: FilterCollection = [redFilter, greenFilter, blueFilter];
 
-const selectionArea: SelectionArea = {
-  id: "idSelect",
+const selectionArea: SelectionAreaProps = {
+  type: "selectionArea",
   width: 0,
   height: 0,
   x: 0,
   y: 0,
 };
 
-const template1: Template = {
+const template1: TemplateProps = {
   id: "template1",
   name: "template1",
   blocks: [
@@ -67,6 +75,8 @@ const template1: Template = {
       height: 100,
       x: 300,
       y: 100,
+      italic: false,
+      underline: false,
     },
     {
       id: "circle1",
@@ -76,7 +86,7 @@ const template1: Template = {
       width: 100,
       height: 100,
       x: 350,
-      y: 500,
+      y: 470,
     },
     {
       id: "img1",
@@ -87,6 +97,7 @@ const template1: Template = {
       y: 150,
       url: "../../src/img/civic.jpg",
       allowedFormat: ["JPG", "JPEG", "PNG"],
+      pic: null,
     },
   ],
 };
@@ -96,7 +107,7 @@ const templateCollection: TemplatesCollection = {
 };
 
 
-const MinPage: CanvasProps = {
+const MinPage: PageProps = {
   id: "pagemin",
   width: 1000,
   height: 600,
@@ -105,10 +116,10 @@ const MinPage: CanvasProps = {
   elements: [],
 };
 
-const MediumPage: CanvasProps = {
+const MediumPage: PageProps = {
   id: "pagemed",
-  width: 1600,
-  height: 900,
+  width: 1200,
+  height: 700,
   x: 50,
   y: 50,
   elements: [
@@ -124,6 +135,8 @@ const MediumPage: CanvasProps = {
       height: 100,
       x: 700,
       y: 20,
+      italic: false,
+      underline: false,
     },
     {
       id: "text2",
@@ -137,6 +150,8 @@ const MediumPage: CanvasProps = {
       height: 100,
       x: 700,
       y: 100,
+      italic: false,
+      underline: false,
     },
     {
       id: "img1",
@@ -147,11 +162,12 @@ const MediumPage: CanvasProps = {
       y: 300,
       url: "../../src/img/light.jpg",
       allowedFormat: ["JPG", "JPEG", "PNG"],
+      pic: null,
     },
   ],
 };
 
-const MaximumPage: CanvasProps = {
+const MaximumPage: PageProps = {
   id: "pagemax",
   width: 800,
   height: 600,
@@ -170,6 +186,8 @@ const MaximumPage: CanvasProps = {
       height: 100,
       x: 0,
       y: 0,
+      italic: false,
+      underline: false,
     },
     {
       id: "text2",
@@ -183,6 +201,8 @@ const MaximumPage: CanvasProps = {
       height: 100,
       x: 0,
       y: 100,
+      italic: false,
+      underline: false,
     },
     {
       id: "img1",
@@ -193,6 +213,7 @@ const MaximumPage: CanvasProps = {
       y: 300,
       url: "../../src/img/camry.jpg",
       allowedFormat: ["JPG", "JPEG", "PNG"],
+      pic: null,
     },
     {
       id: "circle1",
@@ -218,7 +239,7 @@ const MaximumPage: CanvasProps = {
   ],
 };
 
-const TemplatePage: CanvasProps = {
+const TemplatePage: PageProps = {
   id: "pagetem",
   width: 800,
   height: 600,
@@ -228,16 +249,52 @@ const TemplatePage: CanvasProps = {
 };
 
 const historyCommands: HistoryCommands = {
-  id: 1,
+  id: 3,
   history: [MinPage, MediumPage, MaximumPage, TemplatePage],
 };
 
+const colors: Colors = [
+  "#ff0000",
+  "#00ff00",
+  "#0000ff",
+  "#ffffff",
+  "#000000",
+];
+
+const fonts: Fonts = [
+  "Georgia",
+  "Arial",
+  "Courier",
+];
+
+const dataMenuText: DataMenuText = {
+  colors: colors,
+  fonts: fonts,
+};
+
+const defaultMenuText: TextBlockProps = {
+  type: "text",
+  id: "1",
+  value: "Добавить текст",
+  width: 200,
+  height: 200,
+  x: 400,
+  y: 300,
+  fontSize: 20,
+  color: "#000000",
+  fontFamily: "Roboto",
+  bold: false,
+  underline: false,
+  italic: false,
+};
+
 const doc: Doc = {
-  canvas: historyCommands.history[historyCommands.id],
+  page: historyCommands.history[historyCommands.id],
   templateCollection,
   historyCommands,
   filterCollection,
-  selectionArea,
+  dataMenuText,
+  defaultMenuText,
 };
 
 export default doc;

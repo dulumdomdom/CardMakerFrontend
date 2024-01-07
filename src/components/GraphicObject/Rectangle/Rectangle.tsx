@@ -1,18 +1,24 @@
-import { Rectangle } from "../../../types.tsx";
-import styles from "./rectangle.module.css";
+import { useState } from "react";
+import SelectionArea from "../../SelectionArea/SelectionArea";
 
-const RectangleComponent = (data: Rectangle) => {
+import { RectangleProps } from "../../../types";
+import style from "./rectangle.module.css";
+
+const Rectangle = (props: RectangleProps) => {
+  const [activeSelectionArea, setActiveSelectionArea] = useState(false);
+
+  const [state, setState] = useState(props);
+
   const styleProps = {
-    width: `${data.width}px`,
-    height: `${data.height}px`,
-    top: `${data.y}px`,
-    left: `${data.x}px`,
-    backgroundColor: data.backgroundColor,
+    backgroundImage: `${state.backgroundImage}`,
+    backgroundColor: `${state.backgroundColor}`,
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "100%",
   };
 
-  return (
-    <div style={styleProps} className={styles.rectangle}></div>
-  );
+  return <div className={style.rectangle} style={styleProps}></div>;
 };
 
-export default RectangleComponent;
+export default Rectangle;

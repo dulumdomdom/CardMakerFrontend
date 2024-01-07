@@ -1,0 +1,67 @@
+.resizeArea{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.control {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #0C8CE9;
+    z-index: 1;
+}
+
+.leftContol {
+    cursor: ew-resize;
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+    }
+
+.rightControl {
+    cursor: ew-resize;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+}
+
+.topControl {
+    cursor: s-resize;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bottomControl {
+    cursor: s-resize;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.topLeftControl {
+    cursor: nw-resize;
+    top: -5px;
+    left: -5px;
+}
+
+.topRightControl {
+    cursor: ne-resize;
+    top: -5px;
+    right: -5px;
+}
+
+.bottomLeftControl {
+    cursor: ne-resize;
+    bottom: -5px;
+    left: -5px;
+}
+
+.bottomRightControl {
+    cursor: nw-resize;
+    bottom: -5px;
+    right: -5px;
+}

@@ -1,3 +1,4 @@
 .image {
-    position: absolute;
+    width: inherit;
+    height: inherit;
   }

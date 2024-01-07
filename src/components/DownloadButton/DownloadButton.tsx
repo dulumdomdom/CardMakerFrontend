@@ -1,7 +1,7 @@
-import { CanvasProps } from "../../types.tsx";
+import { PageProps } from "../../types.tsx";
 import styles from "../DownloadButton/DownloadButton.module.css";
 
-const DownloadButton = (data: CanvasProps) => {
+const DownloadButton = (data: PageProps) => {
   const createFile = () => {
     const file = new Blob([JSON.stringify(data)], {
       type: "application/json",

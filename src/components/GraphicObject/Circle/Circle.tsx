@@ -1,18 +1,23 @@
-import { Circle } from "../../../types.tsx";
-import styles from "./circle.module.css";
+import { RefObject, useState } from "react";
 
-const CircleComponent = (data: Circle) => {
+import { CircleProps } from "../../../types";
+import SelectionArea from "../../SelectionArea/SelectionArea";
+import style from "./circle.module.css";
+
+const Circle = (props: CircleProps) => {
+  const [activeSelectionArea, setActiveSelectionArea] = useState(false);
+
+  const [state, setState] = useState(props);
   const styleProps = {
-    width: `${data.width}px`,
-    height: `${data.height}px`,
-    top: `${data.y}px`,
-    left: `${data.x}px`,
-    backgroundColor: data.backgroundColor,
+    backgroundImage: `${state.backgroundImage}`,
+    backgroundColor: `${state.backgroundColor}`,
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "100%",
   };
 
-  return (
-    <div style={styleProps} className={styles.circle}></div>
-  );
-}
+  return <div className={style.circle} style={styleProps}></div>;
+};
 
-export default CircleComponent;
+export default Circle;

@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #D8D9DF;
+}
+
+header {
+    background-color: #18191B;
+    color: #18191B;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.logoImg {
+    width: 40px;
+    height: auto;
+}
+
+.leftMenu {
+    background-color: #18191B;
+    width: 70px;
+    height: 100vh;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    argin: 5px;
+}

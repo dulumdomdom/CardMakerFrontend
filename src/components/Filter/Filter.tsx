@@ -1,15 +1,17 @@
-import { Filter } from "../../types.tsx";
-import styles from "./Filter.module.css";
+import { useState } from "react";
 
-const FilterComponent = (data: Filter) => {
+import { FilterProps } from "../../types";
+import style from "./filter.module.css";
+
+const Filter = (props: FilterProps) => {
+  const [state, setState] = useState(props);
+
   const styleProps = {
-    opacity: data.opacity,
-    backgroundColor: data.colorOfFilter,
+    opacity: state.opacity,
+    backgroundColor: state.colorOfFilter,
   };
 
-  return (
-    <div style={styleProps} className={styles.filter}></div>
-  );
+  return <div className={style.filter} style={styleProps}></div>;
 };
 
-export default FilterComponent;
+export default Filter;

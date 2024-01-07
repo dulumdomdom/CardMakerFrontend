@@ -8,40 +8,46 @@ type Size = {
   height: number;
 };
 
-type Block = Position &
-  Size & {
-    id: string;
-  };
+type Block = Position & Size;
 
-type TextBlockProps = Block & {
+type IdNumber = {
+  id: string;
+};
+
+type TextBlockProps = Position & IdNumber & {
   type: "text";
   value: string;
+  width: number;
+  height: number;
   fontSize: number;
   fontFamily: string;
   color: string;
   bold: boolean;
+  italic: boolean;
+  underline: boolean;
 };
 
-type ImageBlock = Block & {
+type ImageBlockProps = Block & IdNumber & {
     type: "image";
     url: string;
     allowedFormat: Array<string>;
+    pic: HTMLImageElement | null;
   };
 
-type GraphicObject = Block & {
+type GraphicObject = Block & IdNumber & {
   backgroundImage: string;
   backgroundColor: string;
 };
 
-type Circle = GraphicObject & {
+type CircleProps = GraphicObject & {
   type: "circle";
 };
 
-type Rectangle = GraphicObject & {
+type RectangleProps = GraphicObject & {
   type: "rectangle";
 };
 
-type Filter = {
+type FilterProps = Block & {
   name: string;
   type: "filter";
   id: string;
@@ -49,48 +55,70 @@ type Filter = {
   opacity: number;
 };
 
-type FilterCollection = Array<Filter>;
+type FilterCollection = Array<FilterProps>;
 
-type SelectionArea = Block;
+type SelectionAreaProps = Block & {
+  type: "selectionArea";
+};
 
-type Template = {
+type TemplateProps = {
   id: string;
   name: string;
   blocks: Array<
     | TextBlockProps
-    | ImageBlock
-    | Filter
-    | Circle
-    | Rectangle
+    | ImageBlockProps
+    | FilterProps
+    | CircleProps
+    | RectangleProps
   >;
 };
 
 type TemplatesCollection = {
-  templates: Array<Template>;
+  templates: Array<TemplateProps>;
 };
 
-type CanvasProps = Block & {
+interface PageProps extends Block {
   id: string;
   elements: Array<
     | TextBlockProps
-    | ImageBlock
-    | Filter
-    | Circle
-    | Rectangle
+    | ImageBlockProps
+    | FilterProps
+    | CircleProps
+    | RectangleProps
   >;
 };
 
 type HistoryCommands = {
   id: number;
-  history: Array<CanvasProps>;
+  history: Array<PageProps>;
+};
+
+type Colors = Array<string>;
+
+type Fonts = Array<string>;
+
+type DataMenuText = {
+  colors: Colors;
+  fonts: Fonts;
+};
+
+type MenuText = {
+  value: string;
+  fontSize: number;
+  fontFamily: string;
+  color: string;
+  bold: boolean;
+  italic: boolean;
+  underline: boolean;
 };
 
 type Doc = {
-  canvas: CanvasProps;
+  page: PageProps;
   templateCollection: TemplatesCollection;
   historyCommands: HistoryCommands;
   filterCollection: FilterCollection;
-  selectionArea: SelectionArea;
+  dataMenuText: DataMenuText;
+  defaultMenuText: TextBlockProps;
 };
 
 export type {
@@ -100,14 +128,19 @@ export type {
   Size,
   Block,
   GraphicObject,
-  ImageBlock,
-  Circle,
-  Rectangle,
-  Filter,
-  SelectionArea,
-  Template,
+  ImageBlockProps,
+  CircleProps,
+  RectangleProps,
+  FilterProps,
+  SelectionAreaProps,
+  TemplateProps,
   TemplatesCollection,
-  CanvasProps,
+  PageProps,
+  Colors,
+  Fonts,
+  MenuText,
+  DataMenuText,
   HistoryCommands,
   FilterCollection,
+  IdNumber,
 };
